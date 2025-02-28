@@ -1,1 +1,52 @@
-const _0x3cc527=_0x3659;function _0xd49e(){const _0x47f86b=['slice','trim','7jzlAFs','4108800kONENC','2474514sjmnZM','reply','802719SLqQBe','command','.impostanome','41620368klRVic','9458772TwpwKX','nomedelbot','2667112bWYkPn','split','ⓘ\x20𝐈𝐦𝐩𝐨𝐬𝐭𝐚\x20𝐢𝐥\x20𝐧𝐨𝐦𝐞\x20𝐝𝐞𝐥\x20𝐛𝐨𝐭\x20𝐝𝐨𝐩𝐨\x20𝐢𝐥\x20𝐜𝐨𝐦𝐚𝐧𝐝𝐨','313817EsZhOH','data'];_0xd49e=function(){return _0x47f86b;};return _0xd49e();}(function(_0x52db97,_0x4427a5){const _0x127455=_0x3659,_0x2a9433=_0x52db97();while(!![]){try{const _0x1a7c02=parseInt(_0x127455(0xd6))/0x1+-parseInt(_0x127455(0xcb))/0x2+-parseInt(_0x127455(0xcd))/0x3+-parseInt(_0x127455(0xd3))/0x4+-parseInt(_0x127455(0xca))/0x5+parseInt(_0x127455(0xd1))/0x6*(-parseInt(_0x127455(0xda))/0x7)+parseInt(_0x127455(0xd0))/0x8;if(_0x1a7c02===_0x4427a5)break;else _0x2a9433['push'](_0x2a9433['shift']());}catch(_0x37dfe5){_0x2a9433['push'](_0x2a9433['shift']());}}}(_0xd49e,0xe7165));const handler=async(_0x3f44e8,{conn:_0x595e05,usedPrefix:_0x516075})=>{const _0x12023b=_0x3659,_0x1e7eac=_0x3f44e8['text'][_0x12023b(0xd9)]()[_0x12023b(0xd4)]('\x20')[_0x12023b(0xd8)](0x1)['join']('\x20');if(_0x1e7eac!==''&&_0x1e7eac!==_0x12023b(0xcf))global['db'][_0x12023b(0xd7)][_0x12023b(0xd2)]=_0x1e7eac,_0x3f44e8[_0x12023b(0xcc)]('ⓘ\x20𝐈𝐥\x20𝐧𝐨𝐦𝐞\x20𝐝𝐞𝐥\x20𝐛𝐨𝐭\x20𝐞\x27\x20𝐬𝐭𝐚𝐭𝐨\x20𝐢𝐦𝐩𝐨𝐬𝐭𝐚𝐭𝐨\x20𝐢𝐧\x20\x20'+_0x1e7eac);else return _0x3f44e8[_0x12023b(0xcc)](_0x12023b(0xd5),null,_0x3f44e8);};handler[_0x3cc527(0xce)]=/^(impostanome)$/i,handler['rowner']=!![];function _0x3659(_0x453c90,_0x4f8e02){const _0xd49ea=_0xd49e();return _0x3659=function(_0x365967,_0x32eae7){_0x365967=_0x365967-0xca;let _0x1682b9=_0xd49ea[_0x365967];return _0x1682b9;},_0x3659(_0x453c90,_0x4f8e02);}export default handler;
+const handler = async (m, { conn, text, args, usedPrefix, command }) => {
+    const exampleMessage = `𝐄𝐬𝐞𝐦𝐩𝐢𝐨:\n✧‌⃟ᗒ ${usedPrefix + command} @${m.sender.split('@')[0]}${usedPrefix + command} ${m.sender.split('@')[0]}\n✧‌⃟ᗒ ${usedPrefix + command}`;
+
+    // Verifica se è stato fornito un numero di telefono valido
+    let phoneNumber = m.quoted ? m.quoted.sender : m.sender ? m.sender : text ? text.replace(/[^0-9]/g, '') : false;
+    if (!phoneNumber) {
+        return conn.reply(m.chat, 'Numero non trovato', exampleMessage, m, { mentions: [m.sender] });
+    }
+
+    // Aggiungi il numero di telefono alla lista degli owner
+    switch (command) {
+        case 'addowner':
+            const addNumber = phoneNumber;
+            global.rowner.push([addNumber]);
+
+            let addedMessage = {
+                key: { participants: '0@s.whatsapp.net', fromMe: false, id: 'Halo' },
+                message: {
+                    extendedTextMessage: {
+                        text: 'Comando eseguito con successo!',
+                        vcard: `BEGIN:VCARD\nVERSION:1.0\nN:;Unlimited;;;\nFN:Unlimited\nORG:Unlimited\nTITLE:\nitem1.TEL;waid=393755853799:+39 375 585 3799\nitem1.X-ABLabel:Unlimited\nX-WA-BIZ-DESCRIPTION:ofc\nX-WA-BIZ-NAME:Unlimited\nEND:VCARD`
+                    }
+                },
+                participant: '0@s.whatsapp.net'
+            };
+            await conn.reply(m.chat, 'Numero aggiunto alla lista degli owner', addedMessage);
+            break;
+
+        case 'delowner':
+            const removeNumber = phoneNumber;
+            const index = global.rowner.findIndex(item => item[0] === removeNumber);
+            if (index !== -1) {
+                global.rowner.splice(index, 1);
+                let removedMessage = {
+                    key: { participants: '0@s.whatsapp.net', fromMe: false, id: 'Halo' },
+                    message: {
+                        extendedTextMessage: {
+                            text: 'Comando eseguito con successo!',
+                            vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;Unlimited;;;\nFN:Unlimited\nORG:Unlimited\nTITLE:\nitem1.TEL;waid=15395490858:+1 (539) 549-0858\nitem1.X-ABLabel:Unlimited\nX-WA-BIZ-DESCRIPTION:ofc\nX-WA-BIZ-NAME:Unlimited\nEND:VCARD`
+                        }
+                    },
+                    participant: '0@s.whatsapp.net'
+                };
+                await conn.reply(m.chat, 'Numero rimosso dalla lista degli owner', removedMessage);
+            }
+            break;
+    }
+};
+
+handler.command = /^(addowner|delowner)$/i;
+handler.premium = true;
+export default handler;
