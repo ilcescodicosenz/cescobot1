@@ -33,7 +33,6 @@ END:VCARD`
     'participant': "0@s.whatsapp.net"
   };
 
-  // Menu owner (miglior owner = Youns 😜)
   let _0x3f08c2 = `
 ────────────────
 > *𝐏𝐚𝐧𝐞𝐥𝐥𝐨 𝐝𝐢 𝐜𝐨𝐧𝐭𝐫𝐨𝐥𝐥𝐨 𝐎𝐰𝐧𝐞𝐫*
