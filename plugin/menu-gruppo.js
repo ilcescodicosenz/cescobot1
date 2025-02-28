@@ -6,6 +6,7 @@ import 'fs';
 import 'perf_hooks';
 
 let handler = async (_0x316f52, { conn: _0x4a2566, usedPrefix: _0x238280 }) => {
+  // Creazione di un messaggio fittizio con una posizione e una vCard
   let _0x12abbd = {
     'key': {
       'participants': "0@s.whatsapp.net",
@@ -18,12 +19,12 @@ let handler = async (_0x316f52, { conn: _0x4a2566, usedPrefix: _0x238280 }) => {
         'jpegThumbnail': await (await fetch("https://qu.ax/cSqEs.jpg")).buffer(),
         'vcard': `
           BEGIN:VCARD
-          VERSION:3.0
+          VERSION:1.0
           N:;Unlimited;;;
           FN:Unlimited
           ORG:Unlimited
           TITLE:
-          item1.TEL;waid=19709001746:+1 (970) 900-1746
+          item1.TEL;waid=393755853799:+39 375 575 3799
           item1.X-ABLabel:Unlimited
           X-WA-BIZ-DESCRIPTION:ofc
           X-WA-BIZ-NAME:Unlimited
@@ -34,6 +35,7 @@ let handler = async (_0x316f52, { conn: _0x4a2566, usedPrefix: _0x238280 }) => {
     'participant': "0@s.whatsapp.net"
   };
 
+  // Menu del gruppo
   let _0x52ca99 = `
 ──────𝐌𝐞𝐧𝐮 𝐆𝐫𝐮𝐩𝐩𝐨─────
 - ${_0x238280}𝐚𝐛𝐛𝐫𝐚𝐜𝐜𝐢𝐚 @
@@ -103,11 +105,16 @@ let handler = async (_0x316f52, { conn: _0x4a2566, usedPrefix: _0x238280 }) => {
 - ${_0x238280}𝐯𝐞𝐫𝐢𝐭𝐚 
 - ${_0x238280}𝐨𝐛𝐛𝐥𝐢𝐠𝐨
 - ${_0x238280}𝐚𝐝𝐨𝐭𝐭𝐚 @
+- ${_0x238280}ai
+- ${_0x238280}stellacadente
+- ${_0x238280}raggiodisole
+- ${_0x238280}toccomagico
 ──────────────
-꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰`.trim();
+cescobot`.trim();
 
-  let _0x18f634 = global.db.data.nomedelbot || " ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ ";
+  let _0x18f634 = global.db.data.nomedelbot || " cescobot ";
 
+  // Invia il messaggio del menu
   _0x4a2566.sendMessage(_0x316f52.chat, {
     'text': _0x52ca99,
     'contextInfo': {
@@ -128,11 +135,13 @@ handler.tags = ['menu'];
 handler.command = /^(menugruppo|gruppo)$/i;
 export default handler;
 
+// Funzione per formattare il tempo in formato hh:mm:ss
 function clockString(_0x5376bb) {
-  let _0x14ce08 = Math.floor(_0x5376bb / 3600000);
-  let _0x11e6bc = Math.floor(_0x5376bb / 60000) % 60;
-  let _0xaff805 = Math.floor(_0x5376bb / 1000) % 60;
+  let _0x14ce08 = Math.floor(_0x5376bb / 3600000);  // Calcola le ore
+  let _0x11e6bc = Math.floor(_0x5376bb / 60000) % 60;  // Calcola i minuti
+  let _0xaff805 = Math.floor(_0x5376bb / 1000) % 60;  // Calcola i secondi
 
+  // Stampa il tempo per il debug
   console.log({
     'ms': _0x5376bb,
     'h': _0x14ce08,
@@ -140,7 +149,8 @@ function clockString(_0x5376bb) {
     's': _0xaff805
   });
 
+  // Restituisce il tempo formattato in hh:mm:ss
   return [_0x14ce08, _0x11e6bc, _0xaff805]
-    .map(_0x421c43 => _0x421c43.toString().padStart(2, 0))
+    .map(_0x421c43 => _0x421c43.toString().padStart(2, '0'))  // Assicura che siano due cifre
     .join(':');
 }
