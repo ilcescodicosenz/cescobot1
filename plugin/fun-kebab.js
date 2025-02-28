@@ -1,4 +1,4 @@
-//questo comando è stato fatto per la mia ragazza 💗
+
 import { performance } from "perf_hooks";
 
 // Funzione per ritardo (delay)
