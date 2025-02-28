@@ -72,6 +72,7 @@ let handler = async (_0x4955de, { conn: _0x4b9a49, usedPrefix: _0xeb2cc9 }) => {
 ➤ ${_0xeb2cc9}𝐧𝐨𝐦𝐞 <𝐭𝐞𝐬𝐭𝐨> - **Modifica nome bot**
 ➤ ${_0xeb2cc9}𝐛𝐢𝐨 <𝐭𝐞𝐬𝐭𝐨> - **Modifica bio bot**
 ➤ ${_0xeb2cc9}𝐥𝐢𝐧𝐤𝐪𝐫 - **Modifica link QR**
+➤ ${_0xeb2cc9}closetime *Tempo chiusura gruppo*
 
 🔒 **Privacy & Sicurezza**:
 
