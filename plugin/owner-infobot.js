@@ -5,63 +5,61 @@ import '@whiskeysockets/baileys';
 import 'fs';
 import 'perf_hooks';
 
-let handler = async (_0x4955de, { conn: _0x4b9a49, usedPrefix: _0xeb2cc9 }) => {
-  let _0x414c2d = {
+let handler = async (m, { conn, usedPrefix }) => {
+  let contactInfo = {
     'key': {
-      'participants': "0@s.whatsapp.net",
+      'participants': '0@s.whatsapp.net',
       'fromMe': false,
       'id': 'Halo'
     },
     'message': {
       'locationMessage': {
-        'name': "Bot Info",
-        'jpegThumbnail': await (await fetch("https://qu.ax/cSqEs.jpg")).buffer(),
-        'vcard': "BEGIN:VCARD\nVERSION:3.0\nN:;Unlimited;;;\nFN:Unlimited\nORG:Unlimited\nTITLE:\nitem1.TEL;waid=19709001746:+1 (970) 900-1746\nitem1.X-ABLabel:Unlimited\nX-WA-BIZ-DESCRIPTION:ofc\nX-WA-BIZ-NAME:Unlimited\nEND:VCARD"
+        'name': 'Bot Info',
+        'jpegThumbnail': await (await fetch('https://qu.ax/cSqEs.jpg')).buffer(),
+        'vcard': `BEGIN:VCARD\nVERSION:1.0\nN:;Unlimited;;;\nFN:Unlimited\nORG:Unlimited\nTITLE:\nitem1.TEL;waid=393755853799:+39 375 585 3799\nitem1.X-ABLabel:Unlimited\nX-WA-BIZ-DESCRIPTION:ofc\nX-WA-BIZ-NAME:Unlimited\nEND:VCARD`
       }
     },
-    'participant': "0@s.whatsapp.net"
+    'participant': '0@s.whatsapp.net'
   };
-  
-  // Messaggio migliorato con una grafica più pulita e visivamente accattivante
-  let _0x259d4e = `
+
+  // Messaggio informativo del bot
+  let infoMessage = `
 ════════════════════
  *𝐈𝐧𝐟𝐨𝐁𝐨𝐭* 
 
-➤ 𝐂𝐫𝐞𝐚𝐭𝐨𝐫𝐞: +46 73 780 71 14
+➤ 𝐂𝐫𝐞𝐚𝐭𝐨𝐫𝐞: +39 375 585 3799
 
-➤ 𝐍𝐨𝐦𝐞 𝐁𝐨𝐭:     ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰
+➤ 𝐍𝐨𝐦𝐞 𝐁𝐨𝐭:   cescobot
 
-➤ 𝐋𝐢𝐧𝐤 𝐆𝐫𝐮𝐩𝐩𝐨: https://chat.whatsapp.com/JhrcigFtXpW4OzdhE9Jdq3
+➤ 𝐋𝐢𝐧𝐤 𝐂𝐚𝐧𝐚𝐥𝐞: https://whatsapp.com/channel/0029Vb2xynG9MF8tPyNWoE35
 
-➤ 𝐋𝐢𝐧𝐤 𝐂𝐚𝐧𝐚𝐥𝐞: https://whatsapp.com/channel/0029VauhQviCsU9Ibrwlkb0h
+➤ 𝐒𝐭𝐚𝐭𝐨 𝐁𝐨𝐭: ~Online~ *No Disturbare*
 
-➤ 𝐒𝐭𝐚𝐭𝐨 𝐁𝐨𝐭: ~Online~ *No Disturbare* 
+➤ 𝐂𝐫𝐞𝐚𝐭𝐨 𝐢𝐥:  *15/02/2025*
 
-➤ 𝐂𝐫𝐞𝐚𝐭𝐨 𝐢𝐥:  *01/09/2024*
+➤𝐆𝐢𝐭𝐡𝐮𝐛: *https://github.com/ilcescodicosenz/cescobot*
 
-➤𝐆𝐢𝐭𝐡𝐮𝐛: *https://github.com/numerofoxi/Gab.git*
-
- ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ 
+cescobot 
 ════════════════════
 `.trim();
-  
-  let _0xf5c7c0 = global.db.data.nomedelbot || " ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ ";
-  
+
+  let botName = global.db.data.nomedelbot || " cescobot ";
+
   // Invia il messaggio con una grafica migliorata
-  _0x4b9a49.sendMessage(_0x4955de.chat, {
-    'text': _0x259d4e,
+  conn.sendMessage(m.chat, {
+    'text': infoMessage,
     'contextInfo': {
-      'mentionedJid': _0x4b9a49.parseMention(wm),
-      'forwardingScore': 0x1,
+      'mentionedJid': conn.parseMention(botName),
+      'forwardingScore': 1,
       'isForwarded': true,
       'forwardedNewsletterMessageInfo': {
-        'newsletterJid': "120363341274693350@newsletter",
+        'newsletterJid': '120363341274693350@newsletter',
         'serverMessageId': '',
-        'newsletterName': ' ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ ✦'
+        'newsletterName': ' cescobot '
       }
     }
   }, {
-    'quoted': _0x414c2d
+    'quoted': contactInfo
   });
 };
 
@@ -71,15 +69,17 @@ handler.command = /^(botinfo)$/i;
 export default handler;
 
 // Funzione per calcolare il tempo di attività
-function clockString(_0x5dad08) {
-  let _0x233c78 = Math.floor(_0x5dad08 / 3600000);
-  let _0x2b10bc = Math.floor(_0x5dad08 / 60000) % 60;
-  let _0x2c7d73 = Math.floor(_0x5dad08 / 1000) % 60;
+function clockString(ms) {
+  let hours = Math.floor(ms / 3600000);
+  let minutes = Math.floor(ms / 60000) % 60;
+  let seconds = Math.floor(ms / 1000) % 60;
+  
   console.log({
-    'ms': _0x5dad08,
-    'h': _0x233c78,
-    'm': _0x2b10bc,
-    's': _0x2c7d73
+    'ms': ms,
+    'h': hours,
+    'm': minutes,
+    's': seconds
   });
-  return [_0x233c78, _0x2b10bc, _0x2c7d73].map(_0x4bd0ef => _0x4bd0ef.toString().padStart(2, 0)).join(':');
+
+  return [hours, minutes, seconds].map(unit => unit.toString().padStart(2, '0')).join(':');
 }
