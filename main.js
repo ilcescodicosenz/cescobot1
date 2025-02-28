@@ -281,7 +281,7 @@ const oneHourAgo = Date.now() - (60 * 60 * 1000)
 directories.forEach(dir => {
 readdirSync(dir, (err, files) => {
 if (err) throw err
-files.forEacfunction clearTmp() {
+files.forEach(function clearTmp() {
   const tmpDir = join(__dirname, './tmp');
   if (!fs.existsSync(tmpDir)) {
     console.error(`Directory ${tmpDir} does not exist.`);
