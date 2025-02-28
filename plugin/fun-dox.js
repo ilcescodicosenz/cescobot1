@@ -36,6 +36,9 @@ let handler = async (m, { conn, text }) => {
         'WINDTRE',
         'Fastweb',
         'Tiscali',
+        'WindTre',
+        'Iliad',
+        'Ho'
     ])}
 📡 *DNS:* ${pickRandom(['8.8.8.8', '8.8.4.4', '1.1.1.1'])}
 🖥️ *MAC Address:* ${pickRandom([
