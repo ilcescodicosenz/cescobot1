@@ -150,7 +150,7 @@ const connectionOptions = {
 logger: pino({ level: 'silent' }),
 printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
 mobile: MethodMobile, 
-browser: opcion == '1' ? ['333-Bot-Md Dev', 'Safari', 'Developer'] : methodCodeQR ? ['333-Bot-Md Dev', 'Safari', 'Developer'] : ['Ubuntu', 'Chrome', 'Developer'],
+browser: opcion == '1' ? ['cescobot', 'Safari', 'Developer'] : methodCodeQR ? ['cescobot', 'Safari', 'Developer'] : ['Ubuntu', 'Chrome', 'Developer'],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -287,18 +287,6 @@ files.forEach(function clearTmp() {
     console.error(`Directory ${tmpDir} does not exist.`);
     return; // Exit early if the directory doesn't exist.
   }
-  const files = readdirSync(tmpDir);
-  files.forEach((file) => {
-    const filePath = join(tmpDir, file);
-    const stats = statSync(filePath);
-    if (stats.isFile() && (Date.now() - stats.mtimeMs >= 1000 * 60 * 3)) {
-      unlinkSync(filePath); // Delete old files
-    }
-  });
-}
-h(file => {
-const filePath = path.join(dir, file)
-stat(filePath, (err, stats) => {
 if (err) throw err;
 if (stats.isFile() && stats.mtimeMs < oneHourAgo && file !== 'creds.json') { 
 unlinkSync(filePath, err => {  
@@ -315,7 +303,49 @@ const originalConsoleMethod = console[methodName]
 console[methodName] = function() {
 const message = arguments[0]
 if (typeof message === 'string' && filterStrings.some(filterString => message.includes(atob(filterString)))) {
-arguments[0] = ""
+arguconst fs = require('fs');
+const path = require('path');
+
+const tmpDir = './someDirectory'; // Sostituisci con il percorso reale della tua directory
+
+const files = fs.readdirSync(tmpDir);
+files.forEach((file) => {
+  const filePath = path.join(tmpDir, file);
+  const stats = fs.statSync(filePath);
+  if (stats.isFile() && (Date.now() - stats.mtimeMs >= 1000 * 60 * 3)) {
+    fs.unlinkSync(filePath); // Delete old files
+  }
+});
+
+// Se vuoi usare una funzione callback asincrona, rimuovi l'errore come segue:
+const h = (callback) => {
+  const dir = './someDirectory';  // Specifica il percorso giusto per la tua directory
+  fs.readdir(dir, (err, files) => {
+    if (err) {
+      co
+        nsole.error('Errore durante la lettura della directory:', err);
+      return;
+    }
+
+    files.forEach((file) => {
+      const filePath = path.join(dir, file);
+      fs.stat(filePath, (err, stats) => {
+        if (err) {
+          console.error('Errore durante la lettura delle statistiche del file:', err);
+          return;
+        }
+
+        callback(filePath, stats);  // Chiamata al callback
+      });
+    });
+  });
+};
+
+// Esempio di utilizzo della funzione `h`
+h((filePath, stats) => {
+  console.log('Elaborato file:', filePath);
+});
+ments[0] = ""
 }
 originalConsoleMethod.apply(console, arguments)
 }}
