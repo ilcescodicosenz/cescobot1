@@ -25,10 +25,9 @@ import { performance } from "perf_hooks";
 let handler = async (_0x255d92, { conn: _0x450425, text: _0x22a382 }) => {
     const _0x5187c9 = _0x2070;
 
-    // Messaggi personalizzati da Youns 🥵
     let _0x8096ad = `🤟🏻 Ora faccio un ditalino a *${_0x22a382}*...`,
-        _0x3b7df4 = `👆🏻 Preparati!`,
-        _0x3a12c3 = `✌🏻 Andiamo avanti...`,
+        _0x3b7df4 = `👆🏻 Inizio ad infilare le dita!`,
+        _0x3a12c3 = `✌🏻 Ora ne metto 3...`,
         _0x2bd5b3 = `☝🏻 Quasi fatto...`,
         _0x8ea5f1 = `✌🏻 È il momento giusto!`,
         _0x4abd8e = `👋🏻 Fatto?`,
@@ -37,7 +36,7 @@ let handler = async (_0x255d92, { conn: _0x450425, text: _0x22a382 }) => {
         _0x3b8ad1 = `🤟🏻 Ora ci siamo...`,
         _0x210b47 = `☝🏻 Non ci credo!`,
         _0x1f6f99 = `🤟🏻 Epico!`,
-        _0x5d3e2b = `👋🏻 Ohhssy, ancora, ahhhh!`;
+        _0x5d3e2b = `👋🏻 Ohsshyy, ancora piu' veloce, ahhhh!`;
 
     // Sequenza dei messaggi 🤓
     await _0x255d92[_0x5187c9(0xb9)](_0x8096ad);
@@ -53,7 +52,7 @@ let handler = async (_0x255d92, { conn: _0x450425, text: _0x22a382 }) => {
     await _0x255d92[_0x5187c9(0xb9)](_0x1f6f99);
     await _0x255d92[_0x5187c9(0xb9)](_0x5d3e2b);
 
-    // Calcolo del tempo (per Youns non esiste, lui è immortale)
+
     let _0x48909b = performance[_0x5187c9(0xb6)](),
         _0x5c4ca0 = performance[_0x5187c9(0xb6)](),
         _0x281d6a = "" + (_0x5c4ca0 - _0x48909b),
