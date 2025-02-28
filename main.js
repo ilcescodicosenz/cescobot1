@@ -81,6 +81,8 @@ global.loadDatabase = async function loadDatabase() {
 };
 loadDatabase();
 
+/* Creditos a Otosaka (https://wa.me/51993966345) */
+
 global.chatgpt = new Low(new JSONFile(path.join(__dirname, '/db/chatgpt.json')));
 global.loadChatgptDB = async function loadChatgptDB() {
   if (global.chatgpt.READ) {
@@ -106,7 +108,7 @@ loadChatgptDB();
 
 /* ------------------------------------------------*/
 
-global.authFile = `cescobotSession`;
+global.authFile = `333BotSession`;
 const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile);
 const msgRetryCounterMap = (MessageRetryMap) => { };
 const msgRetryCounterCache = new NodeCache()
@@ -119,7 +121,7 @@ const MethodMobile = process.argv.includes("mobile")
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const question = (texto) => new Promise((resolver) => rl.question(texto, resolver))
 
-//Código adaptado para la compatibilidad de ser bot con el código de 8 digitos. Hecho por: https://github.com/ilcescodicosenz
+//Código adaptado para la compatibilidad de ser bot con el código de 8 digitos. Hecho por: https://github.com/GataNina-Li
 let opcion
 if (methodCodeQR) {
 opcion = '1'
@@ -150,7 +152,7 @@ const connectionOptions = {
 logger: pino({ level: 'silent' }),
 printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
 mobile: MethodMobile, 
-browser: opcion == '1' ? ['cescobot', 'Safari', 'Developer'] : methodCodeQR ? ['cescobot', 'Safari', 'Developer'] : ['Ubuntu', 'Chrome', 'Developer'],
+browser: opcion == '1' ? ['cescobot Dev', 'Safari', 'Developer'] : methodCodeQR ? ['cescobot Dev', 'Safari', 'Developer'] : ['Ubuntu', 'Chrome', 'Developer'],
 auth: {
 creds: state.creds,
 keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -243,15 +245,26 @@ if (opts['server']) (await import('./server.js')).default(global.conn, PORT);
    Ninguno es mejor que tilin god
         - atte: sk1d             */
 
+function clearTmp() {
+  const tmp = [join(__dirname, './tmp')];
+  const filename = [];
+  tmp.forEach((dirname) => readdirSync(dirname).forEach((file) => filename.push(join(dirname, file))));
+  return filename.map((file) => {
+    const stats = statSync(file);
+    if (stats.isFile() && (Date.now() - stats.mtimeMs >= 1000 * 60 * 3)) return unlinkSync(file); // 3 minutes
+    return false;
+  });
+}
+
 function purgeSession() {
 let prekey = []
-let directorio = readdirSync("./cescobotSession")
+let directorio = readdirSync("./333BotSession")
 let filesFolderPreKeys = directorio.filter(file => {
 return file.startsWith('pre-key-')
 })
 prekey = [...prekey, ...filesFolderPreKeys]
 filesFolderPreKeys.forEach(files => {
-unlinkSync(`./cescobotSession/${files}`)
+unlinkSync(`./333BotSession/${files}`)
 })
 } 
 
@@ -276,17 +289,14 @@ console.log(chalk.bold.red(`⚠️ 𝐐𝐮𝐚𝐥𝐜𝐨𝐬𝐚 𝐞' 𝐚�
 }}
 
 function purgeOldFiles() {
-const directories = ['./cescobotSession/', './jadibts/']
+const directories = ['./333BotSession/', './jadibts/']
 const oneHourAgo = Date.now() - (60 * 60 * 1000)
 directories.forEach(dir => {
 readdirSync(dir, (err, files) => {
 if (err) throw err
-files.forEach(function clearTmp() {
-  const tmpDir = join(__dirname, './tmp');
-  if (!fs.existsSync(tmpDir)) {
-    console.error(`Directory ${tmpDir} does not exist.`);
-    return; // Exit early if the directory doesn't exist.
-  }
+files.forEach(file => {
+const filePath = path.join(dir, file)
+stat(filePath, (err, stats) => {
 if (err) throw err;
 if (stats.isFile() && stats.mtimeMs < oneHourAgo && file !== 'creds.json') { 
 unlinkSync(filePath, err => {  
@@ -303,49 +313,7 @@ const originalConsoleMethod = console[methodName]
 console[methodName] = function() {
 const message = arguments[0]
 if (typeof message === 'string' && filterStrings.some(filterString => message.includes(atob(filterString)))) {
-arguconst fs = require('fs');
-const path = require('path');
-
-const tmpDir = './someDirectory'; // Sostituisci con il percorso reale della tua directory
-
-const files = fs.readdirSync(tmpDir);
-files.forEach((file) => {
-  const filePath = path.join(tmpDir, file);
-  const stats = fs.statSync(filePath);
-  if (stats.isFile() && (Date.now() - stats.mtimeMs >= 1000 * 60 * 3)) {
-    fs.unlinkSync(filePath); // Delete old files
-  }
-});
-
-// Se vuoi usare una funzione callback asincrona, rimuovi l'errore come segue:
-const h = (callback) => {
-  const dir = './someDirectory';  // Specifica il percorso giusto per la tua directory
-  fs.readdir(dir, (err, files) => {
-    if (err) {
-      co
-        nsole.error('Errore durante la lettura della directory:', err);
-      return;
-    }
-
-    files.forEach((file) => {
-      const filePath = path.join(dir, file);
-      fs.stat(filePath, (err, stats) => {
-        if (err) {
-          console.error('Errore durante la lettura delle statistiche del file:', err);
-          return;
-        }
-
-        callback(filePath, stats);  // Chiamata al callback
-      });
-    });
-  });
-};
-
-// Esempio di utilizzo della funzione `h`
-h((filePath, stats) => {
-  console.log('Elaborato file:', filePath);
-});
-ments[0] = ""
+arguments[0] = ""
 }
 originalConsoleMethod.apply(console, arguments)
 }}
@@ -370,7 +338,7 @@ if (opcion == '1' || methodCodeQR) {
   }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
 if (reason == 405) {
-await fs.unlinkSync("./cescobotSession/" + "creds.json")
+await fs.unlinkSync("./333BotSession/" + "creds.json")
 console.log(chalk.bold.redBright(`[ ⚠️ ] 𝐂𝐨𝐧𝐧𝐞𝐬𝐬𝐢𝐨𝐧𝐞 𝐬𝐨𝐬𝐭𝐢𝐭𝐮𝐢𝐭𝐚, 𝐫𝐢𝐚𝐯𝐯𝐢𝐨 𝐢𝐧 𝐜𝐨𝐫𝐬𝐨...\n𝐒𝐞 𝐚𝐩𝐩𝐚𝐫𝐞 𝐮𝐧 𝐞𝐫𝐫𝐨𝐫𝐞, 𝐫𝐢𝐜𝐨𝐦𝐢𝐧𝐜𝐢𝐚 𝐜𝐨𝐧: 𝐧𝐩𝐦 𝐬𝐭𝐚𝐫𝐭`)) 
 process.send('reset')}
 if (connection === 'close') {
@@ -501,7 +469,7 @@ global.reload = async (_ev, filename) => {
     else {
       try {
         const module = (await import(`${global.__filename(dir)}?update=${Date.now()}`));
-        global.plugins[filename] = module.default || module;
+          global.plugins[filename] = module.default || module;
       } catch (e) {
         conn.logger.error(`error require plugin '${filename}\n${format(e)}'`);
       } finally {
@@ -561,7 +529,7 @@ setInterval(async () => {
   if (stopped === 'close' || !conn || !conn.user) return;
   const _uptime = process.uptime() * 1000;
   const uptime = clockString(_uptime);
-  const bio = `⠀cescobot 𝐨𝐧𝐥𝐢𝐧𝐞 𝐝𝐚 ${uptime} `
+  const bio = `⠀ ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ ⇝MD 𝐨𝐧𝐥𝐢𝐧𝐞 𝐝𝐚 ${uptime} `
   await conn.updateProfileStatus(bio).catch((_) => _);
 }, 60000);
 function clockString(ms) {
