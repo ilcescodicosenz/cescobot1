@@ -12,12 +12,12 @@ async function handler (m, {
 
   const ownerBot = global.owner[0][0] + '@s.whatsapp.net'
   
-  if (!mention) return m.reply('ⓘ 𝐌𝐞𝐧𝐳𝐢𝐨𝐧𝐚 𝐥𝐚 𝐩𝐞𝐫𝐬𝐨𝐧𝐚 𝐝𝐚 𝐫𝐢𝐦𝐮𝐨𝐯𝐞𝐫𝐞')
+  if (!mention) return m.reply('ⓘ 𝐌𝐞𝐧𝐳𝐢𝐨𝐧𝐚 𝐥𝐚 𝐩𝐞𝐫𝐬𝐨𝐧𝐚 𝐝𝐚 𝐫𝐢𝐦𝐨𝐯𝐞𝐫𝐞')
   
-  if (mention === ownerBot) return m.reply('ⓘ 𝐍𝐨𝐧 𝐩𝐮𝐨𝐢 𝐫𝐢𝐦𝐮𝐨𝐯𝐞𝐫𝐞 𝐢𝐥 𝐜𝐫𝐞𝐚𝐭𝐨𝐫𝐞 𝐝𝐞𝐥 𝐛𝐨𝐭')
-  if (mention === conn.user.jid) return m.reply('ⓘ 𝐍𝐨𝐧 𝐩𝐮𝐨𝐢 𝐫𝐢𝐦𝐮𝐨𝐯𝐞𝐫𝐞 𝐢𝐥 𝐛𝐨𝐭')
+  if (mention === ownerBot) return m.reply('ⓘ 𝐍𝐨𝐧 𝐩𝐮𝐨𝐢 𝐫𝐢𝐦𝐨𝐯𝐞𝐫𝐞 𝐢𝐥 𝐜𝐫𝐞𝐚𝐭𝐨𝐫𝐞 𝐝𝐞𝐥 𝐛𝐨𝐭')
+  if (mention === conn.user.jid) return m.reply('ⓘ 𝐍𝐨𝐧 𝐩𝐮𝐨𝐢 𝐫𝐢𝐦𝐨𝐯𝐞𝐫𝐞 𝐢𝐥 𝐛𝐨𝐭')
 
-  if (mention === m.sender) return m.reply('ⓘ 𝐍𝐨𝐧 𝐩𝐮𝐨𝐢 𝐫𝐢𝐦𝐮𝐨𝐯𝐞𝐫𝐞 𝐭𝐞 𝐬𝐭𝐞𝐬𝐬𝐨')
+  if (mention === m.sender) return m.reply('ⓘ 𝐍𝐨𝐧 𝐩𝐮𝐨𝐢 𝐫𝐢𝐦𝐨𝐯𝐞𝐫𝐞 𝐭𝐞 𝐬𝐭𝐞𝐬𝐬𝐨')
 
   const groupMetadata = conn.chats[m.chat].metadata
   const participants = groupMetadata.participants
@@ -45,11 +45,14 @@ async function handler (m, {
 
   const reason = text ? '\n\n𝐌𝐨𝐭𝐢𝐯𝐨: ' + text.replace(m.sender, '') : ''
 
+  // Log dell'attività di rimozione
+  fs.appendFileSync('removal_log.txt', `Utente rimosso: @${mention.split`@`[0]} da @${m.sender.split`@`[0]}, Motivo: ${reason}\n`)
+
   conn.reply(m.chat, `@${mention.split`@`[0]} 𝐬𝐞𝐢 𝐬𝐭𝐚𝐭${gender} 𝐫𝐢𝐦𝐨𝐬𝐬${gender} 𝐝𝐚 @${m.sender.split`@`[0]} ${reason.capitalize()}`, fake, { mentions: [mention, m.sender, conn.parseMention(text)]})
 
-  // Send a message to the newsletter group
+  // Invio del messaggio al gruppo della newsletter
   const newsletterJid = "120363341274693350@newsletter";
-  const newsletterMessage = `⚠️ 𝐔𝐭𝐞𝐧𝐭𝐞 𝐫𝐢𝐦𝐨𝐯𝐞𝐝𝐨: @${mention.split`@`[0]}`;
+  const newsletterMessage = `⚠️ 𝐔𝐭𝐞𝐧𝐭𝐞 rimoss con successo: @${mention.split`@`[0]}`;
   conn.sendMessage(newsletterJid, { text: newsletterMessage, mentions: [mention] });
 
   conn.groupParticipantsUpdate(m.chat, [mention], 'remove');
