@@ -33,7 +33,7 @@ let handler = async (m, { conn, text }) => {
         
       
     ])}
-    ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰
+    cescobot
 ━━━━━━━━━━━━━━━━━━━━━
 
 🕒 *Tempo di esecuzione:* ${speed}
