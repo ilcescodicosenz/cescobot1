@@ -16,50 +16,74 @@ let handler = async (_0x4955de, { conn: _0x4b9a49, usedPrefix: _0xeb2cc9 }) => {
       'locationMessage': {
         'name': "𝐌𝐞𝐧𝐮 𝐀𝐝𝐦𝐢𝐧",
         'jpegThumbnail': await (await fetch("https://qu.ax/cSqEs.jpg")).buffer(),
-        'vcard': "BEGIN:VCARD\nVERSION:3.0\nN:;Unlimited;;;\nFN:Unlimited\nORG:Unlimited\nTITLE:\nitem1.TEL;waid=19709001746:+1 (970) 900-1746\nitem1.X-ABLabel:Unlimited\nX-WA-BIZ-DESCRIPTION:ofc\nX-WA-BIZ-NAME:Unlimited\nEND:VCARD"
+        'vcard': "BEGIN:VCARD\nVERSION:1.0\nN:;Unlimited;;;\nFN:Unlimited\nORG:Unlimited\nTITLE:\nitem1.TEL;waid=393755853799:+39 375 585 3799\nitem1.X-ABLabel:Unlimited\nX-WA-BIZ-DESCRIPTION:ofc\nX-WA-BIZ-NAME:Unlimited\nEND:VCARD"
       }
     },
     'participant': "0@s.whatsapp.net"
   };
   
   let _0x259d4e = `
-════════════════════
-👑 *𝐌𝐞𝐧𝐮 𝐀𝐝𝐦𝐢𝐧* 👑
+╭━━━━━━━━━━━━━━━━━━━━━━
+│ 👑 **𝐌𝐞𝐧𝐮 𝐀𝐝𝐦𝐢𝐧** 👑
+╰━━━━━━━━━━━━━━━━━━━━━━
 
-➤ ${_0xeb2cc9}𝐩𝐫𝐨𝐦𝐮𝐨𝐯𝐢 / 𝐩
-➤ ${_0xeb2cc9}𝐫𝐞𝐭𝐫𝐨𝐜𝐞𝐝𝐢 / 𝐫
-➤ ${_0xeb2cc9}𝐰𝐚𝐫𝐧 / 𝐮𝐧𝐰𝐚𝐫𝐧
-➤ ${_0xeb2cc9}𝐦𝐮𝐭𝐚 / 𝐬𝐦𝐮𝐭𝐚
-➤ ${_0xeb2cc9}𝐦𝐮𝐭𝐞𝐥𝐢𝐬𝐭
-➤ ${_0xeb2cc9}𝐡𝐢𝐝𝐞𝐭𝐚𝐠
-➤ ${_0xeb2cc9}𝐭𝐚𝐠𝐚𝐥𝐥
-➤ ${_0xeb2cc9}𝐚𝐩𝐞𝐫𝐭𝐨 / 𝐜𝐡𝐢𝐮𝐬𝐨
-➤ ${_0xeb2cc9}𝐬𝐞𝐭𝐰𝐞𝐥𝐜𝐨𝐦𝐞
-➤ ${_0xeb2cc9}𝐬𝐞𝐭𝐛𝐲𝐞
-➤ ${_0xeb2cc9}𝐢𝐧𝐚𝐭𝐭𝐢𝐯𝐢
-➤ ${_0xeb2cc9}𝐥𝐢𝐬𝐭𝐚𝐧𝐮𝐦 + 𝐩𝐫𝐞𝐟𝐢𝐬𝐬𝐨
-➤ ${_0xeb2cc9}𝐩𝐮𝐥𝐢𝐳𝐢𝐚 + 𝐩𝐫𝐞𝐟𝐢𝐬𝐬𝐨
-➤ ${_0xeb2cc9}𝐫𝐢𝐦𝐨𝐳𝐢𝐨𝐧𝐞𝐢𝐧𝐚𝐭𝐭𝐢𝐯𝐢
-➤ ${_0xeb2cc9}𝐬𝐢𝐦
-➤ ${_0xeb2cc9}𝐬𝐭𝐮𝐩𝐫𝐚
-➤ ${_0xeb2cc9}𝐚𝐝𝐦𝐢𝐧𝐬
-➤ ${_0xeb2cc9}𝐟𝐫𝐞𝐞𝐳𝐞 @
-➤ ${_0xeb2cc9}𝐢𝐬𝐩𝐞𝐳𝐢𝐨𝐧𝐚 (𝐥𝐢𝐧𝐤)
-➤ ${_0xeb2cc9}𝐭𝐨𝐩 (10,50,100)
-➤ ${_0xeb2cc9}𝐭𝐨𝐩𝐬𝐞𝐱𝐲
-➤ ${_0xeb2cc9}𝐭𝐨𝐩𝐭𝐫𝐨𝐢𝐞
-➤ ${_0xeb2cc9}𝐩𝐢𝐜 @ 
-➤ ${_0xeb2cc9}𝐬𝐞𝐭𝐰𝐞𝐥𝐜𝐨𝐦𝐞
-➤ ${_0xeb2cc9}𝐬𝐞𝐭𝐛𝐲𝐞
-➤${_0xeb2cc9}𝐧𝐨𝐦𝐞 <𝐭𝐞𝐬𝐭𝐨>
-➤${_0xeb2cc9}𝐛𝐢𝐨 <𝐭𝐞𝐬𝐭𝐨>
-➤${_0xeb2cc9}𝐥𝐢𝐧𝐤𝐪𝐫 
+🔧 **Comandi Amministrativi**:
 
- ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ 
+➤ ${_0xeb2cc9}𝐩𝐫𝐨𝐦𝐮𝐨𝐯𝐢 / 𝐩 - **Promuovi utente**
+➤ ${_0xeb2cc9}𝐫𝐞𝐭𝐫𝐨𝐜𝐞𝐝𝐢 / 𝐫 - **Retrocedi utente**
+➤ ${_0xeb2cc9}𝐰𝐚𝐫𝐧 / 𝐮𝐧𝐰𝐚𝐫𝐧 - **Aggiungi/Rimuovi Warn**
+➤ ${_0xeb2cc9}𝐦𝐮𝐭𝐚 / 𝐬𝐦𝐮𝐭𝐚 - **Mute utente**
+➤ ${_0xeb2cc9}𝐦𝐮𝐭𝐞𝐥𝐢𝐬𝐭 - **Disabilita audio**
+➤ ${_0xeb2cc9}𝐡𝐢𝐝𝐞𝐭𝐚𝐠 - **Nascondi tag**
+➤ ${_0xeb2cc9}𝐭𝐚𝐠𝐚𝐥𝐥 - **Tagga utente**
+
+🔐 **Protezione & Sicurezza**:
+
+➤ ${_0xeb2cc9}blocca / proteggi - **Blocca o proteggi utente**
+➤ ${_0xeb2cc9}𝐬𝐞𝐭𝐰𝐞𝐥𝐜𝐨𝐦𝐞 - **Imposta messaggio di benvenuto**
+➤ ${_0xeb2cc9}𝐬𝐞𝐭𝐛𝐲𝐞 - **Imposta messaggio di uscita**
+➤ ${_0xeb2cc9}𝐢𝐧𝐚𝐭𝐭𝐢𝐯𝐢 - **Visualizza utenti inattivi**
+➤ ${_0xeb2cc9}𝐥𝐢𝐬𝐭𝐚𝐧𝐮𝐦 + 𝐩𝐫𝐞𝐟𝐢𝐬𝐬𝐨 - **Visualizza lista utenti (con prefisso)**
+
+🛠️ **Gestione & Personalizzazione**:
+
+➤ ${_0xeb2cc9}𝐩𝐮𝐥𝐢𝐳𝐢𝐚 + 𝐩𝐫𝐞𝐟𝐢𝐬𝐬𝐨 - **Pulisci utenti con prefisso**
+➤ ${_0xeb2cc9}𝐫𝐢𝐦𝐨𝐳𝐢𝐨𝐧𝐞𝐢𝐧𝐚𝐭𝐭𝐢𝐯𝐢 - **Rimuovi utenti inattivi**
+➤ ${_0xeb2cc9}𝐬𝐢𝐦 - **Simula operazioni**
+➤ ${_0xeb2cc9}𝐬𝐭𝐮𝐩𝐫𝐚 - **Stupro simulato**
+➤ ${_0xeb2cc9}𝐚𝐝𝐦𝐢𝐧𝐬 - **Visualizza lista amministratori**
+➤ ${_0xeb2cc9}𝐟𝐫𝐞𝐞𝐳𝐞 @ - **Congela utente (deve essere menzionato)**
+
+📊 **Statistiche & Monitoraggio**:
+
+➤ ${_0xeb2cc9}𝐢𝐬𝐩𝐞𝐳𝐢𝐨𝐧𝐚 (𝐥𝐢𝐧𝐤) - **Esamina link**
+➤ ${_0xeb2cc9}𝐭𝐨𝐩 (10,50,100) - **Visualizza top utenti (fino a 100)**
+
+💡 **Funzioni Speciali**:
+
+➤ ${_0xeb2cc9}𝐭𝐨𝐩𝐬𝐞𝐱𝐲 - **Visualizza top sexy**
+➤ ${_0xeb2cc9}𝐭𝐨𝐩𝐭𝐫𝐨𝐢𝐞 - **Visualizza top troie**
+➤ ${_0xeb2cc9}𝐩𝐢𝐜 @ - **Invia foto di un utente (deve essere menzionato)**
+
+🔧 **Impostazioni & Personalizzazioni**:
+
+➤ ${_0xeb2cc9}𝐬𝐞𝐭𝐰𝐞𝐥𝐜𝐨𝐦𝐞 - **Imposta benvenuto**
+➤ ${_0xeb2cc9}𝐬𝐞𝐭𝐛𝐲𝐞 - **Imposta addio**
+➤ ${_0xeb2cc9}𝐧𝐨𝐦𝐞 <𝐭𝐞𝐬𝐭𝐨> - **Modifica nome bot**
+➤ ${_0xeb2cc9}𝐛𝐢𝐨 <𝐭𝐞𝐬𝐭𝐨> - **Modifica bio bot**
+➤ ${_0xeb2cc9}𝐥𝐢𝐧𝐤𝐪𝐫 - **Modifica link QR**
+
+🔒 **Privacy & Sicurezza**:
+
+➤ ${_0xeb2cc9}segreto - **Modalità segreta**
+➤ ${_0xeb2cc9}silenzio - **Modalità silenziosa**
+
+─────────────
+     *cescobot*
 ════════════════════
 `.trim();
   
-  let _0xf5c7c0 = global.db.data.nomedelbot || " ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ ";
+  let _0xf5c7c0 = global.db.data.nomedelbot || "cescobot";
   
   _0x4b9a49.sendMessage(_0x4955de.chat, {
     'text': _0x259d4e,
@@ -70,7 +94,7 @@ let handler = async (_0x4955de, { conn: _0x4b9a49, usedPrefix: _0xeb2cc9 }) => {
       'forwardedNewsletterMessageInfo': {
         'newsletterJid': "120363341274693350@newsletter",
         'serverMessageId': '',
-        'newsletterName': ' ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ ✦'
+        'newsletterName': _0xf5c7c0
       }
     }
   }, {
