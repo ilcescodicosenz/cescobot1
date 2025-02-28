@@ -18,12 +18,12 @@ let handler = async (_0x1ece27, { conn: _0x4d8805, usedPrefix: _0x2b0a49 }) => {
         'name': "𝐌𝐞𝐧𝐮 𝐎𝐰𝐧𝐞𝐫",
         'jpegThumbnail': await (await fetch("https://qu.ax/cSqEs.jpg")).buffer(),
         'vcard': `BEGIN:VCARD
-VERSION:3.0
+VERSION:1.0
 N:;Unlimited;;;
 FN:Unlimited
 ORG:Unlimited
 TITLE:
-item1.TEL;waid=19709001746:+1 (970) 900-1746
+item1.TEL;waid=39375583799:+39 375 585 3799
 item1.X-ABLabel:Unlimited
 X-WA-BIZ-DESCRIPTION:ofc
 X-WA-BIZ-NAME:Unlimited
@@ -77,10 +77,10 @@ END:VCARD`
 > ${_0x2b0a49}𝐛𝐚𝐧𝐠𝐡𝐨𝐬𝐭
 > ${_0x2b0a49}𝐨𝐟𝐟𝐮𝐬𝐜𝐚 <𝐭𝐞𝐬𝐭𝐨>
 ────────────────
- ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ 
+cescobot
 `;
 
-  let _0x575cba = global.db.data.nomedelbot || " ꙰ 𝟥𝟥𝟥 ꙰ 𝔹𝕆𝕋 ꙰ ";
+  let _0x575cba = global.db.data.nomedelbot || " cescobot ";
   
   await _0x4d8805.sendMessage(_0x1ece27.chat, {
     text: _0x3f08c2,
@@ -105,7 +105,6 @@ handler.command = /^(owner|menuowner|pannello)$/i;
 
 export default handler;
 
-// Formattazione del tempo (il tempo non esiste per Youns perche lui è immortale)
 function clockString(_0xd0d91e) {
   let _0x27c45a = Math.floor(_0xd0d91e / 3600000);
   let _0x42617d = Math.floor(_0xd0d91e / 60000) % 60;
