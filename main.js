@@ -108,7 +108,7 @@ loadChatgptDB();
 
 /* ------------------------------------------------*/
 
-global.authFile = `333BotSession`;
+global.authFile = `cescobotsession`;
 const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile);
 const msgRetryCounterMap = (MessageRetryMap) => { };
 const msgRetryCounterCache = new NodeCache()
@@ -289,7 +289,7 @@ console.log(chalk.bold.red(`⚠️ 𝐐𝐮𝐚𝐥𝐜𝐨𝐬𝐚 𝐞' 𝐚�
 }}
 
 function purgeOldFiles() {
-const directories = ['./333BotSession/', './jadibts/']
+const directories = ['./cescobotSession/', './jadibts/']
 const oneHourAgo = Date.now() - (60 * 60 * 1000)
 directories.forEach(dir => {
 readdirSync(dir, (err, files) => {
