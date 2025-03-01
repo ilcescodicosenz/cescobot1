@@ -1,22 +1,25 @@
 let handler = async (m, { conn, command, text }) => {
-    // Calcolo in base alla volontà di Youns
-    let width = Math.floor(Math.random() * 31);
+    // Genera un livello casuale di alcol nel sangue
+    let width = Math.floor(Math.random() * 101);
 
-    // Frase finale basata sulla misura
-    let finalPhrase = width >= 8 
-        ?"👮 *il ragazzo/a è astemio/a*"
-        : "😅 *il bro è calato in depressione*";
+    // Determina il messaggio in base al livello
+    let finalPhrase = width >= 70 
+        ? "🍾 *Questo tizio/a potrebbe avere problemi con l'alcol!*" 
+        : width >= 30 
+        ? "🥂 *Beve in modo responsabile, o quasi...*" 
+        : "🚰 *Totalmente sobrio, niente sbronze per oggi!*";
 
-    // Messaggio 🥵
+    // Creazione del messaggio
     let message = `
 ━━━━━━━━━━━━━━━━━━━━━━━
-*MOMENTO DEL TEST DELL'ALCOL!🍷* 
+*MOMENTO DEL TEST DELL'ALCOL! 🍷* 
 ━━━━━━━━━━━━━━━━━━━━━━━
- *${text} è alcolizzato del *${width}%🍷!* 
+ *${text ? text : 'Tu'} ha un tasso alcolemico del ${width}%!* 🍷
 ━━━━━━━━━━━━━━━━━━━━━━━
 ${finalPhrase}
 `.trim();
 
+    // Invia il messaggio con le menzioni
     m.reply(message, null, { mentions: conn.parseMention(message) });
 };
 
