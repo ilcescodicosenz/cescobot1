@@ -307,21 +307,6 @@ if (!opts['test']) {
 // Avvio del server se abilitato
 if (opts['server']) (await import('./server.js')).default(global.conn, PORT);
 
-/* --- Testo ispirazionale ---
-   "Ed è stato il miglior 'momazo' del mondo,
-    anche se non ho esitato nemmeno per un secondo,
-    non mi pento di essermi spassato,
-    perché il divertimento è un sentimento.
-    
-    - Il Waza 👻👻👻👻 (Aiden)
-
-    Anche io so fare 'momazi', Aiden...
-    Ecco l'aggiornamento per la cancellazione intelligente delle sessioni e dei sotto-bot.
-    
-    Nessuno è migliore di Tilin God.
-    - Con affetto: sk1d"
-----------------------------------*/
-
 // Funzione per la pulizia dei file temporanei (elimina file più vecchi di 3 minuti)
 function clearTmp() {
   const tmpDirs = [join(__dirnameLocal, './tmp')];
@@ -335,10 +320,9 @@ function clearTmp() {
   });
 }
 
-// Funzione per eliminare file di sessione pre-key nella cartella "333BotSession"
 function purgeSession() {
   let prekey = [];
-  let directory = readdirSync("./333BotSession");
+  let directory = readdirSync("./cescobotsession");
   let filesFolderPreKeys = directory.filter(file => file.startsWith('pre-key-'));
   prekey = [...prekey, ...filesFolderPreKeys];
   filesFolderPreKeys.forEach(file => {
@@ -425,7 +409,7 @@ async function connectionUpdate(update) {
     }
   }
   if (connection === 'open') {
-    console.log(chalk.green('\nCescobot connesso ✅\n'));
+    console.log(chalk.green('\ncescobot connesso ✅\n'));
   }
   let reason = new Boom(lastDisconnect?.error)?.output?.statusCode;
   if (reason == 405) {
