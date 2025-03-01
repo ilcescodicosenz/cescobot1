@@ -3,6 +3,8 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '1';
 import './config.js';
 import './api.js';
 import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const NodeCache = require('node-cache');
 import path, { join } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 import { platform } from 'process';
