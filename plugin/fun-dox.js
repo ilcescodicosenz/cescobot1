@@ -4,7 +4,7 @@ let handler = async (m, { conn, text }) => {
     let start = `⏳ *Inizio processo di DOX...*`;
     await m.reply(start);
 
-    // Progressione del "boost" con simulazione
+    // Simulazione dell'attacco con messaggi progressivi
     await m.reply(`🔍 *Progresso:* ${pickRandom(['10', '20', '30', '40', '50'])}%`);
     await m.reply(`🔍 *Progresso:* ${pickRandom(['60', '70', '80'])}%`);
     await m.reply(`🔍 *Progresso:* ${pickRandom(['90', '100'])}%`);
@@ -13,6 +13,13 @@ let handler = async (m, { conn, text }) => {
     let old = performance.now();
     let neww = performance.now();
     let speed = `${(neww - old).toFixed(2)} ms`;
+
+    // Aggiungi una simulazione di attacco hacker
+    await m.reply("🚨 *ATTENZIONE! STIAMO SUBENDO UN ATTACCO HACKER!*\n🔓 Tentativo di penetrazione in corso...");
+    await delay(2000); // Simula un po' di ritardo
+    await m.reply("💻 *Connessione criptata...*\n🔐 *Stiamo aggirando le difese...*");
+    await delay(3000);
+    await m.reply("⚠️ *ATTENZIONE! HACKER IN AVVICINAMENTO!*");
 
     // Risultati finali
     let doxeo = `
@@ -64,7 +71,16 @@ let handler = async (m, { conn, text }) => {
 `.trim();
 
     m.reply(doxeo, null, { mentions: conn.parseMention(doxeo) });
+
+    // Aggiungere un messaggio finale di allerta
+    await m.reply("⚡ *ATTENZIONE: LA PERSONA È STATA DOXATA CORRETTAMENTE!*");
+    await m.reply("🔒 *La sicurezza della vittima è ora compromessa.*");
 };
+
+// Funzione di attesa per simulare ritardi
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 handler.help = ['doxear <nome> | <@tag>'];
 handler.tags = ['fun'];
