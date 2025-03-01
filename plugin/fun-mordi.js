@@ -1,7 +1,7 @@
 let handler = async (m, { conn, usedPrefix, command, text }) => {
     let who;
 
-    // Determina chi abbracciare, se è un gruppo o una chat privata
+    // Determina chi mordere
     if (m.isGroup) {
         who = m.mentionedJid[0] 
             ? m.mentionedJid[0] 
@@ -12,16 +12,29 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
         who = text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.chat;
     }
 
-    // Controlla se la persona da abbracciare è valida
-    let user = global.db.data.users[who];
-    if (!who) return m.reply(`Menziona chi vuoi mordere😅`);
+    // Se non è stata menzionata una persona valida
+    if (!who) return m.reply(`Menziona chi vuoi mordere 😅`);
 
-    // Invia il messaggio dell'abbraccio
-    let abrazo = await conn.reply(m.chat, `@${m.sender.split('@')[0]} 𝐬𝐭𝐚 𝐦𝐨𝐫𝐝𝐞𝐧𝐝𝐨 @${who.split('@')[0]} 🦷 `, m, { mentions: [who, m.sender] });
+    // Messaggi progressivi per l'effetto "morso"
+    let messaggi = [
+        `🦷 @${m.sender.split('@')[0]} sta mostrando i denti a @${who.split('@')[0]}...`,
+        `😬 @${who.split('@')[0]} sente un brivido...`,
+        `😱 *CHOMP!* @${m.sender.split('@')[0]} ha morso @${who.split('@')[0]}!`
+    ];
 
-    // Aggiungi la reazione all'abbraccio
-    conn.sendMessage(m.chat, { react: { text: '🦷', key: abrazo.key } });
+    // Invia i messaggi progressivi
+    for (let msg of messaggi) {
+        await new Promise(resolve => setTimeout(resolve, 1500)); // Ritardo di 1.5s
+        await conn.reply(m.chat, msg, m, { mentions: [who, m.sender] });
+    }
+
+    // Aggiungi reazione all'ultimo messaggio
+    conn.sendMessage(m.chat, { react: { text: '🦷', key: m.key } });
 };
 
 handler.command = ['mordi'];
+handler.group = true; // Permette l'uso del comando nei gruppi
+handler.botAdmin = false;
+handler.admin = false;
+
 export default handler;
